@@ -1,2 +1,1 @@
-# PointWarVR
 # UnnamedVR
