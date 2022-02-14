@@ -1,0 +1,11 @@
+
+.hg/
+binaries/
+deriveddatacache/
+.vs/
+build/
+intermediate/
+saved/
+*.orig
+*.sln
+*.xlsx
