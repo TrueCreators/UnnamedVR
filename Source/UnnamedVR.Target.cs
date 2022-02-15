@@ -12,7 +12,7 @@ public class UnnamedVRTarget : TargetRules
 
         //bUseLoggingInShipping = true;
         Type = TargetType.Game;
-        ExtraModuleNames.AddRange(new string[] { "UnnamedVR" });
+        ExtraModuleNames.AddRange(new string[] { "UnnamedVR"});
         //bUsePCHFiles = false;
         //bUseUnityBuild = false;
 
