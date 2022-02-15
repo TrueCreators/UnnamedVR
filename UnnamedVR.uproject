@@ -7,20 +7,17 @@
 		{
 			"Name": "UnnamedVR",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"VRExpansionPlugin"
+			]
 		}
 	],
 	"Plugins": [
 		{
 			"Name": "OpenXR",
-			"Enabled": true,
-			"SupportedTargetPlatforms": [
-				"Win32",
-				"Win64",
-				"Linux",
-				"Android",
-				"HoloLens"
-			]
+			"Enabled": true
 		},
 		{
 			"Name": "VRExpansionPlugin",
@@ -43,6 +40,15 @@
 			"Enabled": true
 		},
 		{
+			"Name": "OculusVR",
+			"Enabled": false,
+			"SupportedTargetPlatforms": [
+				"Win32",
+				"Win64",
+				"Android"
+			]
+		},
+		{
 			"Name": "OculusOpenXR",
 			"Enabled": true,
 			"SupportedTargetPlatforms": [
@@ -62,7 +68,6 @@
 		}
 	],
 	"TargetPlatforms": [
-		"PS4",
 		"WindowsNoEditor"
 	]
 }

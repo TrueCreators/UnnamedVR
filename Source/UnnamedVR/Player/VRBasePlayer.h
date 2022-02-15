@@ -1,13 +1,9 @@
-// Project:         Advanced Locomotion System V4 on C++
-// Copyright:       Copyright (C) 2021 Doğa Can Yanıkoğlu
-// License:         MIT License (http://www.opensource.org/licenses/mit-license.php)
-// Source Code:     https://github.com/dyanikoglu/ALSV4_CPP
-// Original Author: Doğa Can Yanıkoğlu
-// Contributors:    Haziq Fadhil, Drakynfly, CanisHelix
-
+// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
+#include "CoreMinimal.h"
+#include "VRCharacter.h"
 #include "CoreMinimal.h"
 #include "Components/TimelineComponent.h"
 #include "Library/ALSCharacterEnumLibrary.h"
@@ -15,9 +11,9 @@
 #include "Engine/DataTable.h"
 #include "GameFramework/Character.h"
 
-#include "ALSBaseCharacter.generated.h"
+#include "VRBasePlayer.generated.h"
 
-// forward declarations
+
 class UALSDebugComponent;
 class UTimelineComponent;
 class UAnimInstance;
@@ -26,20 +22,20 @@ class UALSCharacterAnimInstance;
 class UALSPlayerCameraBehavior;
 enum class EVisibilityBasedAnimTickOption : uint8;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FNPCJumpPressedSignature);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FJumpPressedSignature);
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FNPCRagdollStateChangedSignature, bool, bRagdollState);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FRagdollStateChangedSignature, bool, bRagdollState);
 
-/*
- * Base character class
+/**
+ * 
  */
-UCLASS(BlueprintType)
-class UNNAMEDVR_API AALSBaseCharacter : public ACharacter
+UCLASS()
+class UNNAMEDVR_API AVRBasePlayer : public AVRCharacter
 {
 	GENERATED_BODY()
-
+	
 public:
-	AALSBaseCharacter(const FObjectInitializer& ObjectInitializer);
+	AVRBasePlayer(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION(BlueprintCallable, Category = "ALS|Movement")
 	FORCEINLINE class UALSCharacterMovementComponent* GetMyMovementComponent() const
@@ -177,10 +173,10 @@ public:
 	/** Input */
 
 	UPROPERTY(BlueprintAssignable, Category = "ALS|Input")
-	FNPCJumpPressedSignature JumpPressedDelegate;
+	FJumpPressedSignature JumpPressedDelegate;
 
 	UPROPERTY(BlueprintAssignable, Category = "ALS|Input")
-	FNPCRagdollStateChangedSignature RagdollStateChangedDelegate;
+	FRagdollStateChangedSignature RagdollStateChangedDelegate;
 
 	UFUNCTION(BlueprintGetter, Category = "ALS|Input")
 	EALSStance GetDesiredStance() const { return DesiredStance; }
