@@ -13,7 +13,14 @@
 	"Plugins": [
 		{
 			"Name": "OpenXR",
-			"Enabled": true
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win32",
+				"Win64",
+				"Linux",
+				"Android",
+				"HoloLens"
+			]
 		},
 		{
 			"Name": "VRExpansionPlugin",
@@ -34,15 +41,6 @@
 		{
 			"Name": "OpenXRExpansionPlugin",
 			"Enabled": true
-		},
-		{
-			"Name": "OculusVR",
-			"Enabled": false,
-			"SupportedTargetPlatforms": [
-				"Win32",
-				"Win64",
-				"Android"
-			]
 		},
 		{
 			"Name": "OculusOpenXR",
