@@ -7,11 +7,7 @@
 		{
 			"Name": "UnnamedVR",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"AdditionalDependencies": [
-				"Engine",
-				"VRExpansionPlugin"
-			]
+			"LoadingPhase": "Default"
 		}
 	],
 	"Plugins": [
@@ -40,8 +36,8 @@
 			"Enabled": true
 		},
 		{
-			"Name": "OculusOpenXR",
-			"Enabled": true,
+			"Name": "OculusVR",
+			"Enabled": false,
 			"SupportedTargetPlatforms": [
 				"Win32",
 				"Win64",
@@ -49,16 +45,17 @@
 			]
 		},
 		{
-			"Name": "SteamVR",
-			"Enabled": false,
+			"Name": "OculusOpenXR",
+			"Enabled": true,
 			"SupportedTargetPlatforms": [
 				"Win32",
 				"Win64",
-				"Linux"
+				"Android"
 			]
 		}
 	],
 	"TargetPlatforms": [
+		"PS4",
 		"WindowsNoEditor"
 	]
 }
