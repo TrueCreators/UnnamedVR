@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "VRCharacter.h"
-#include "CoreMinimal.h"
+#include "VRMovementComponent.h"
 #include "Components/TimelineComponent.h"
 #include "Library/ALSCharacterEnumLibrary.h"
 #include "Library/ALSCharacterStructLibrary.h"
@@ -38,7 +38,7 @@ public:
 	AVRBasePlayer(const FObjectInitializer& ObjectInitializer);
 
 	UFUNCTION(BlueprintCallable, Category = "ALS|Movement")
-	FORCEINLINE class UALSCharacterMovementComponent* GetMyMovementComponent() const
+	FORCEINLINE class UVRMovementComponent* GetMyMovementComponent() const
 	{
 		return MyCharacterMovementComponent;
 	}
@@ -433,7 +433,7 @@ protected:
 protected:
 	/* Custom movement component*/
 	UPROPERTY()
-	UALSCharacterMovementComponent* MyCharacterMovementComponent;
+	UVRMovementComponent* MyCharacterMovementComponent;
 
 	/** Input */
 

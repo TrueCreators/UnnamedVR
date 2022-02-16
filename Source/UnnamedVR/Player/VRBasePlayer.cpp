@@ -11,7 +11,6 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/TimelineComponent.h"
 #include "Curves/CurveFloat.h"
-#include "Character/ALSCharacterMovementComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
@@ -30,7 +29,7 @@ const FName NAME_spine_03(TEXT("spine_03"));
 
 
 AVRBasePlayer::AVRBasePlayer(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer.SetDefaultSubobjectClass<UALSCharacterMovementComponent>(CharacterMovementComponentName))
+	: Super(ObjectInitializer.SetDefaultSubobjectClass<UVRMovementComponent>(CharacterMovementComponentName))
 {
 	PrimaryActorTick.bCanEverTick = true;
 	bUseControllerRotationYaw = 0;
@@ -66,7 +65,7 @@ void AVRBasePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 void AVRBasePlayer::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	MyCharacterMovementComponent = Cast<UALSCharacterMovementComponent>(Super::GetMovementComponent());
+	MyCharacterMovementComponent = Cast<UVRMovementComponent>(Super::GetMovementComponent());
 }
 
 void AVRBasePlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
