@@ -8,6 +8,7 @@
 #include "Components/TimelineComponent.h"
 #include "Library/ALSCharacterEnumLibrary.h"
 #include "Library/ALSCharacterStructLibrary.h"
+#include "Animation/VRCharacterAnimInstance.h"
 #include "Engine/DataTable.h"
 #include "GameFramework/Character.h"
 
@@ -18,7 +19,7 @@ class UALSDebugComponent;
 class UTimelineComponent;
 class UAnimInstance;
 class UAnimMontage;
-class UALSCharacterAnimInstance;
+class UVRCharacterAnimInstance;
 class UALSPlayerCameraBehavior;
 enum class EVisibilityBasedAnimTickOption : uint8;
 
@@ -247,7 +248,7 @@ public:
 	/** Utility */
 
 	UFUNCTION(BlueprintCallable, Category = "ALS|Utility")
-	UALSCharacterAnimInstance* GetMainAnimInstance() { return MainAnimInstance; }
+	UVRCharacterAnimInstance* GetMainAnimInstance() { return MainAnimInstance; }
 
 	UFUNCTION(BlueprintCallable, Category = "ALS|Utility")
 	float GetAnimCurveValue(FName CurveName) const;
@@ -619,7 +620,7 @@ protected:
 	float PreviousAimYaw = 0.0f;
 
 	UPROPERTY(BlueprintReadOnly, Category = "ALS|Utility")
-	UALSCharacterAnimInstance* MainAnimInstance = nullptr;
+	UVRCharacterAnimInstance* MainAnimInstance = nullptr;
 
 	UPROPERTY(BlueprintReadOnly, Category = "ALS|Camera")
 	UALSPlayerCameraBehavior* CameraBehavior;

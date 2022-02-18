@@ -48,18 +48,18 @@ void AALSBaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAxis("MoveForward/Backwards", this, &AALSBaseCharacter::PlayerForwardMovementInput);
-	PlayerInputComponent->BindAxis("MoveRight/Left", this, &AALSBaseCharacter::PlayerRightMovementInput);
-	PlayerInputComponent->BindAxis("LookUp/Down", this, &AALSBaseCharacter::PlayerCameraUpInput);
-	PlayerInputComponent->BindAxis("LookLeft/Right", this, &AALSBaseCharacter::PlayerCameraRightInput);
+	PlayerInputComponent->BindAxis("MoveForwardBackwards", this, &AALSBaseCharacter::PlayerForwardMovementInput);
+	PlayerInputComponent->BindAxis("MoveRightLeft", this, &AALSBaseCharacter::PlayerRightMovementInput);
+	PlayerInputComponent->BindAxis("LookUpDown", this, &AALSBaseCharacter::PlayerCameraUpInput);
+	PlayerInputComponent->BindAxis("LookLeftRight", this, &AALSBaseCharacter::PlayerCameraRightInput);
 	PlayerInputComponent->BindAction("JumpAction", IE_Pressed, this, &AALSBaseCharacter::JumpPressedAction);
 	PlayerInputComponent->BindAction("JumpAction", IE_Released, this, &AALSBaseCharacter::JumpReleasedAction);
 	PlayerInputComponent->BindAction("StanceAction", IE_Pressed, this, &AALSBaseCharacter::StancePressedAction);
 	PlayerInputComponent->BindAction("WalkAction", IE_Pressed, this, &AALSBaseCharacter::WalkPressedAction);
 	PlayerInputComponent->BindAction("RagdollAction", IE_Pressed, this, &AALSBaseCharacter::RagdollPressedAction);
-	PlayerInputComponent->BindAction("SelectRotationMode_1", IE_Pressed, this,
+	PlayerInputComponent->BindAction("SelectRotationMode1", IE_Pressed, this,
 	                                 &AALSBaseCharacter::VelocityDirectionPressedAction);
-	PlayerInputComponent->BindAction("SelectRotationMode_2", IE_Pressed, this,
+	PlayerInputComponent->BindAction("SelectRotationMode2", IE_Pressed, this,
 	                                 &AALSBaseCharacter::LookingDirectionPressedAction);
 	PlayerInputComponent->BindAction("SprintAction", IE_Pressed, this, &AALSBaseCharacter::SprintPressedAction);
 	PlayerInputComponent->BindAction("SprintAction", IE_Released, this, &AALSBaseCharacter::SprintReleasedAction);
@@ -1327,8 +1327,8 @@ void AALSBaseCharacter::LimitRotation(float AimYawMin, float AimYawMax, float In
 void AALSBaseCharacter::GetControlForwardRightVector(FVector& Forward, FVector& Right) const
 {
 	const FRotator ControlRot(0.0f, AimingRotation.Yaw, 0.0f);
-	Forward = GetInputAxisValue("MoveForward/Backwards") * UKismetMathLibrary::GetForwardVector(ControlRot);
-	Right = GetInputAxisValue("MoveRight/Left") * UKismetMathLibrary::GetRightVector(ControlRot);
+	Forward = GetInputAxisValue("MoveForwardBackwards") * UKismetMathLibrary::GetForwardVector(ControlRot);
+	Right = GetInputAxisValue("MoveRightLeft") * UKismetMathLibrary::GetRightVector(ControlRot);
 }
 
 FVector AALSBaseCharacter::GetPlayerMovementInput() const
@@ -1344,7 +1344,7 @@ void AALSBaseCharacter::PlayerForwardMovementInput(float Value)
 	if (MovementState == EALSMovementState::Grounded || MovementState == EALSMovementState::InAir)
 	{
 		// Default camera relative movement behavior
-		const float Scale = UALSMathLibrary::FixDiagonalGamepadValues(Value, GetInputAxisValue("MoveRight/Left")).Key;
+		const float Scale = UALSMathLibrary::FixDiagonalGamepadValues(Value, GetInputAxisValue("MoveRightLeft")).Key;
 		const FRotator DirRotator(0.0f, AimingRotation.Yaw, 0.0f);
 		AddMovementInput(UKismetMathLibrary::GetForwardVector(DirRotator), Scale);
 	}
@@ -1355,7 +1355,7 @@ void AALSBaseCharacter::PlayerRightMovementInput(float Value)
 	if (MovementState == EALSMovementState::Grounded || MovementState == EALSMovementState::InAir)
 	{
 		// Default camera relative movement behavior
-		const float Scale = UALSMathLibrary::FixDiagonalGamepadValues(GetInputAxisValue("MoveForward/Backwards"), Value)
+		const float Scale = UALSMathLibrary::FixDiagonalGamepadValues(GetInputAxisValue("MoveForwardBackwards"), Value)
 			.Value;
 		const FRotator DirRotator(0.0f, AimingRotation.Yaw, 0.0f);
 		AddMovementInput(UKismetMathLibrary::GetRightVector(DirRotator), Scale);
