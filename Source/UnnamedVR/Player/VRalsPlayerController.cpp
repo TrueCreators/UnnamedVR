@@ -1,7 +1,7 @@
 ﻿#include "VRalsPlayerController.h"
 
-#include "VRBasePlayer.h"
-#include "Character/ALSPlayerCameraManager.h"
+#include "VRPlayer.h"
+#include "VRPlayerCameraManager.h"
 #include "Components/ALSDebugComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -36,11 +36,11 @@ void AVRalsPlayerController::BeginPlayingState()
 void AVRalsPlayerController::SetupCamera()
 {
 	// Call "OnPossess" in Player Camera Manager when possessing a pawn
-	AALSPlayerCameraManager* CastedMgr = Cast<AALSPlayerCameraManager>(PlayerCameraManager);
+	AVRPlayerCameraManager* CastedMgr = Cast<AVRPlayerCameraManager>(PlayerCameraManager);
 	if (PossessedCharacter && CastedMgr)
 	{
 		//ТУТ
-		//CastedMgr->OnPossess(PossessedCharacter);
+		CastedMgr->OnPossess(Cast<AVRPlayer>(PossessedCharacter));
 	}
 }
 
